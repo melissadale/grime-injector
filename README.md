@@ -10,19 +10,19 @@ In depth explanation and example can be found here: www.cs.montana.edu/~mdale/gr
 
 
 # How to Set Up
-*Download project and import into Eclipse
-*Add Javassist to build path
-**Right Click on javassist.jar in the Lib
-**Build Path -> Configure Build Path
-**Under "Libraries" tab, click add JARs and add the javassist jar
+* Download project and import into Eclipse
+* Add Javassist to build path
+ * Right Click on javassist.jar in the Lib
+ * Build Path -> Configure Build Path
+ * Under "Libraries" tab, click add JARs and add the javassist jar
 
-*Download and Setup SonarQube and SonarQube Runner
-**Follow these directions: http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
+* Download and Setup SonarQube and SonarQube Runner
+ * Follow these directions: http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
 
 # Analyze a project
-*Create a java package called "analyze_this"
-*Paste the project you wish to model the grime growth into the "analyze_this" package
-*Run the GUI class
-*Start SonarQube Server
-*Run sonar_drilldown.bat (in the Lib folder)
-*Navigate to localhost:9000
+* Create a java package called "analyze_this"
+* Paste the project you wish to model the grime growth into the "analyze_this" package
+* Run the GUI class
+* Start SonarQube Server
+* Run sonar_drilldown.bat (in the Lib folder)
+* Navigate to localhost:9000
