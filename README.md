@@ -1,6 +1,9 @@
 # grime-injector
 This is a project that models design pattern growth on java projects. I would be extremely excited/honored if you are interested in using this program. Please let me know how/why you're using it - and as there is a solid chance you might need help getting it up and running on your own machine - I more than welcome an email: melissa.r.dale@gmail.com 
 
+A video of the grime-injector in action can be viewed here: [Injector Movie](https://www.youtube.com/watch?v=wIiU2TJmVKs)
+It is not a terribly exciting video, but this is what you are seeing. The user enters the class names of java classes that exist in a design pattern, and then repeats for the classes not in the design pattern. After some seconds we see flashes from command prompt as scripts are automatically executed to grab, modify, decompile the modified files, and also generates sonar properties file. We then see the file explorer and drill into the Results folder. 
+
 # Details of how this project functions
 At a high level, this takes in a java project, modifies the bytecode to model 6 types of design pattern grime growths, 
 decompiles back to a Java project, and creates a SonarQube properties file so that Technical Debt scores may be calculated 
