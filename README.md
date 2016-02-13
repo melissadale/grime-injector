@@ -30,7 +30,7 @@ In depth explanation and example can be found here: www.cs.montana.edu/~mdale/gr
 # Analyze a project
 * Create a java package called "analyze_this"
 * Paste the project you wish to model the grime growth into the "analyze_this" package
-* Run the GUI class
+* Run the GUI class and Click Inject
 * Start SonarQube Server
 * Run sonar_drilldown.bat (in the Lib folder)
 * Navigate to localhost:9000
