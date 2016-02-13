@@ -12,7 +12,7 @@ on the modified Java projects.
 In depth explanation and example can be found here: www.cs.montana.edu/~mdale/grime-injector
 
 
-# How to Set Up
+# How to Set Up and Run for Yourself
 * Download project and import into Eclipse
 * Add Javassist and decompile.bat to build path
  * Right Click on javassist.jar in the Lib
