@@ -12,7 +12,7 @@ on the modified Java projects.
 In depth explanation and example can be found here: www.cs.montana.edu/~mdale/grime-injector
 
 
-# How to Set Up and Run for Yourself
+# How to Set Up the Grime Injector to use for Yourself
 * Download project and import into Eclipse
 * Add Javassist and jad_decompile.bat to build path
  * Right Click on javassist.jar and jad_decompile.bat in the Lib directory
@@ -29,9 +29,14 @@ In depth explanation and example can be found here: www.cs.montana.edu/~mdale/gr
 
 
 # Analyze a project
-* Create a java package called "analyze_this"
+* Create a java package called "analyze_this" inside of Grime-Injector
 * Paste the project you wish to model the grime growth into the "analyze_this" package
-* Run the GUI class and Click Inject
+* Run the GUI class (note you will have to include relative paths to files if they are located in subdirectories) and Click Inject
 * Start SonarQube Server
 * Run sonar_drilldown.bat (in the Lib folder)
 * Navigate to localhost:9000
+
+
+#Some more items of note
+* WarpDrive.java is a file started to run InjectorLogic.java (to test - because I did not understand the importance of formal unit tests at the time - and run InjectorLogic.java)
+* SonarConfigalizer.java soley creates the sonar-project.properties file. 
