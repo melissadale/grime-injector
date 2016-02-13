@@ -14,13 +14,18 @@ In depth explanation and example can be found here: www.cs.montana.edu/~mdale/gr
 
 # How to Set Up
 * Download project and import into Eclipse
-* Add Javassist to build path
+* Add Javassist and decompile.bat to build path
  * Right Click on javassist.jar in the Lib
- * Build Path -> Configure Build Path
+ * Build Path -> Add to Build Path
  * Under "Libraries" tab, click add JARs and add the javassist jar
-
 * Download and Setup SonarQube and SonarQube Runner
  * Follow these directions: http://docs.sonarqube.org/display/SONAR/Setup+and+Upgrade
+ 
+
+# Some items of note
+ * This only works for Windows - I used (heavily) batch files to launch the scripts to decompile and launch SonarQube
+ * Right now, the decompiler is launced via an absolute path, you will need to correct at least this line: Line 629 in GUI.java
+
 
 # Analyze a project
 * Create a java package called "analyze_this"
