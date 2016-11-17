@@ -626,7 +626,8 @@ public class GUI extends JFrame {
 					else{
 						engage.inject(versions, repeats, all, patterns, not_patterns);
 					}
-					Runtime.getRuntime().exec("cmd /c start C://Users/Melissa/Documents/grime-injector/Lib/jad_decompile.bat");
+					String path = System.getProperty("user.dir")+ "\\Lib\\jad_decompile.bat";
+					Runtime.getRuntime().exec("cmd /c start " + path);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
