@@ -633,7 +633,6 @@ public class GUI extends JFrame {
 					e.printStackTrace();
 				}
 				write_config_csv();
-				
 				System.out.println("DONE!");
 				
 			}
