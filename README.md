@@ -14,7 +14,7 @@ In depth explanation and example can be found here: www.cs.montana.edu/~mdale/gr
 
 # How to Set Up the Grime Injector to use for Yourself
 * Download project and import into Eclipse
-* Add Javassist and jad_decompile.bat to build path
+* You may have to add Javassist and jad_decompile.bat to build path
  * Right Click on javassist.jar and jad_decompile.bat in the Lib directory
  * Build Path -> Add to Build Path
  * Under "Libraries" tab, click add JARs and add the javassist jar
@@ -24,12 +24,10 @@ In depth explanation and example can be found here: www.cs.montana.edu/~mdale/gr
 
 # Some items of note
  * This only works for Windows - I used (heavily) batch files to launch the scripts to decompile and launch SonarQube
- * Right now, the decompiler is launced via an absolute path, you will need to correct at least this line: Line 629 in GUI.java
- * While I am confident this program performed as expected on my local machine, I am much less confident it will work on other machines (e.g. I didn't take care to use relative paths instead of absolute paths) - so once again, please let me know if you are trying to use my program: melissa.r.dale@gmail.com I would be so happy to help it work for you. 
+ * While I am confident this program performed as expected on several different personal machines, I am much less confident it will work on all machines - so once again, please let me know if you are trying to use my program: melissa.r.dale@gmail.com I will be so happy to help it work for you. 
 
 
 # Analyze a project
-* Create a java package called "analyze_this" inside of Grime-Injector
 * Paste the project you wish to model the grime growth into the "analyze_this" package
 * Run the GUI class (note you will have to include relative paths to files if they are located in subdirectories) and Click Inject
 * Start SonarQube Server
