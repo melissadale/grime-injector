@@ -2,3 +2,4 @@
 .project
 EnteredSettings.csv
 bin/.gitignore
+bin/
