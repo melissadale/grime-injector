@@ -4,6 +4,18 @@ This is a project that models [design pattern grime growths] (http://www.cs.mont
 A video of the grime-injector in action can be viewed here: [Injector Movie](https://www.youtube.com/watch?v=wIiU2TJmVKs)
 It is not a terribly exciting video, but it is annotated with descriptions of what is happening and when. 
 
+# Cite this Project
+If you are using this tool for your research, here's some bibtex for you:
+
+```
+% Design Pattern Grime Injector
+@misc{Dale2014GrimeInjector, 
+   author = {Melissa R Dale}, 
+   title = {Design Pattern Grime Injector}, 
+   howpublished = {\url{https://github.com/melissadale/grime-injector}} 
+} 
+```
+
 # Details of how this project functions
 At a high level, this takes in a java project, modifies the bytecode to model 6 types of design pattern grime growths, 
 decompiles back to a Java project, and creates a SonarQube properties file so that Technical Debt scores may be calculated 
