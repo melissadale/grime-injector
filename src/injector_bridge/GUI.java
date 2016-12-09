@@ -32,6 +32,11 @@ import javax.swing.JFileChooser;
 
 
 public class GUI extends JFrame {
+	/*===Sonar Stuff ===*/
+	String sserver_path = "C:\\sonarqube-6.1\\bin\\windows-x86-64\\StartSonar.bat";
+	String sscanner_path = "C:\\sonar-scanner-2.8\bin\\sonar-scanner.bat";	
+	/*===Sonar Stuff ===*/
+	
 	
 	/*===Injector Stuff ===*/
 	private WarpDrive engage = new WarpDrive();
