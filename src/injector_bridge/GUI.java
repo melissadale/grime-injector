@@ -29,9 +29,16 @@ import java.io.IOException;
 
 import javassist.*;
 import javax.swing.JFileChooser;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 
 public class GUI extends JFrame {
+	
+	/*===Sonar Stuff ===*/
+	String sserver_path = "C:\\sonarqube-6.1\\bin\\windows-x86-64\\StartSonar.bat";
+	String sscanner_path = "C:\\sonar-scanner-2.8\\bin\\sonar-scanner.bat";	
+	/*===Sonar Stuff ===*/
 	
 	/*===Injector Stuff ===*/
 	private WarpDrive engage = new WarpDrive();
@@ -67,6 +74,8 @@ public class GUI extends JFrame {
 	ClassPool pool = ClassPool.getDefault();
 	private JButton btnGetProjects;
 	private JButton btnGetProjects_1;
+	private JPanel panel;
+	private JButton btnStopSonarServer;
 
 
 	/**
@@ -97,14 +106,14 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 300, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		lblPatternClasses = new JLabel("Pattern Classes");
-		lblPatternClasses.setForeground(new Color(0, 102, 0));
+		lblPatternClasses.setForeground(Color.BLACK);
 		lblPatternClasses.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblPatternClasses = new GridBagConstraints();
 		gbc_lblPatternClasses.insets = new Insets(0, 0, 5, 5);
@@ -113,11 +122,12 @@ public class GUI extends JFrame {
 		contentPane.add(lblPatternClasses, gbc_lblPatternClasses);
 		
 		lblNotPatternClasses = new JLabel("Not Pattern Classes");
-		lblNotPatternClasses.setForeground(new Color(0, 102, 0));
+		lblNotPatternClasses.setForeground(Color.BLACK);
 		lblNotPatternClasses.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblNotPatternClasses = new GridBagConstraints();
-		gbc_lblNotPatternClasses.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNotPatternClasses.gridx = 14; //TODO: Adjust
+		gbc_lblNotPatternClasses.gridwidth = 4;
+		gbc_lblNotPatternClasses.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNotPatternClasses.gridx = 7; //TODO: Adjust
 		gbc_lblNotPatternClasses.gridy = 0;
 		contentPane.add(lblNotPatternClasses, gbc_lblNotPatternClasses);
 		
@@ -585,6 +595,72 @@ public class GUI extends JFrame {
 		gbc_textField_3.gridx = 3;
 		gbc_textField_3.gridy = 11;
 		contentPane.add(textField_3, gbc_textField_3);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "SONARQUBE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 128, 0)));
+		panel.setLayout(null);
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridheight = 4;
+		gbc_panel.gridwidth = 9;
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 6;
+		gbc_panel.gridy = 12;
+		contentPane.add(panel, gbc_panel);
+		
+		JLabel lblStartThe = new JLabel("1. Start the Sonar Qube \"server\" at any time");
+		lblStartThe.setBounds(10, 25, 293, 14);
+		panel.add(lblStartThe);
+		
+		JLabel lblOnceThe = new JLabel("2. Once the server process is up, and grime has been injected, launch sonar scanner");
+		lblOnceThe.setBounds(10, 81, 484, 14);
+		panel.add(lblOnceThe);
+		
+		JButton btnSonarServer = new JButton("Sonar Server");
+		btnSonarServer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Runtime.getRuntime().exec("cmd /c start " + sserver_path);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnSonarServer.setForeground(new Color(0, 102, 0));
+		btnSonarServer.setBackground(new Color(204, 255, 204));
+		btnSonarServer.setBounds(20, 47, 181, 23);
+		panel.add(btnSonarServer);
+		
+		JButton btnSonarScanner = new JButton("Sonar Scanner");
+		btnSonarScanner.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String path = System.getProperty("user.dir")+ "\\Lib\\sonar_drilldown.bat";
+					Runtime.getRuntime().exec("cmd /c start " + path + " " + sscanner_path);
+					System.out.println("cmd /c start " + path + " " + sscanner_path);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnSonarScanner.setForeground(new Color(0, 102, 0));
+		btnSonarScanner.setBackground(new Color(204, 255, 204));
+		btnSonarScanner.setBounds(20, 106, 181, 23);
+		panel.add(btnSonarScanner);
+		
+		btnStopSonarServer = new JButton("Stop Sonar Server");
+		btnStopSonarServer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		btnStopSonarServer.setForeground(new Color(128, 0, 0));
+		btnStopSonarServer.setBackground(new Color(204, 255, 204));
+		btnStopSonarServer.setBounds(221, 47, 181, 23);
+		panel.add(btnStopSonarServer);
 
 		
 		chckbxNewCheckBox = new JCheckBox("Inject differnt grime types on top of each other");
@@ -665,7 +741,7 @@ public class GUI extends JFrame {
 			
 	   		GridBagConstraints gbc_chckbxTestpurposes = new GridBagConstraints();
 	   		gbc_chckbxTestpurposes.gridx = 6;
-	   		gbc_chckbxTestpurposes.gridy = 2+i;
+	   		gbc_chckbxTestpurposes.gridy = 1+i;
 	   		
 			String name = "analyze_this."+pclass.getText();
 
@@ -692,8 +768,8 @@ public class GUI extends JFrame {
 			labels[i].setVisible(true);
 			
 	   		GridBagConstraints gbc_chckbxTestpurposes = new GridBagConstraints();
-	   		gbc_chckbxTestpurposes.gridx = 14;
-	   		gbc_chckbxTestpurposes.gridy = 2+i;
+	   		gbc_chckbxTestpurposes.gridx = 7;
+	   		gbc_chckbxTestpurposes.gridy = 1+i;
 	   		
 			String name = "analyze_this."+npclass.getText();
 			
@@ -723,7 +799,6 @@ public class GUI extends JFrame {
 			}
 		}
 	}
-	
 	private void remove_np_name(String given){
 		for (int i = 0; i<not_patterns.size(); i++){
 			if (not_patterns.get(i)== given){
