@@ -30,13 +30,14 @@ import java.io.IOException;
 import javassist.*;
 import javax.swing.JFileChooser;
 import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 
 public class GUI extends JFrame {
 	
 	/*===Sonar Stuff ===*/
 	String sserver_path = "C:\\sonarqube-6.1\\bin\\windows-x86-64\\StartSonar.bat";
-	String sscanner_path = "C:\\sonar-scanner-2.8\bin\\sonar-scanner.bat";	
+	String sscanner_path = "C:\\sonar-scanner-2.8\\bin\\sonar-scanner.bat";	
 	/*===Sonar Stuff ===*/
 	
 	/*===Injector Stuff ===*/
@@ -74,6 +75,7 @@ public class GUI extends JFrame {
 	private JButton btnGetProjects;
 	private JButton btnGetProjects_1;
 	private JPanel panel;
+	private JButton btnStopSonarServer;
 
 
 	/**
@@ -596,7 +598,7 @@ public class GUI extends JFrame {
 		
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBorder(new TitledBorder(null, "SONARQUBE", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GREEN));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "SONARQUBE", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 128, 0)));
 		panel.setLayout(null);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridheight = 4;
@@ -631,10 +633,34 @@ public class GUI extends JFrame {
 		panel.add(btnSonarServer);
 		
 		JButton btnSonarScanner = new JButton("Sonar Scanner");
+		btnSonarScanner.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String path = System.getProperty("user.dir")+ "\\Lib\\sonar_drilldown.bat";
+					Runtime.getRuntime().exec("cmd /c start " + path + " " + sscanner_path);
+					System.out.println("cmd /c start " + path + " " + sscanner_path);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnSonarScanner.setForeground(new Color(0, 102, 0));
 		btnSonarScanner.setBackground(new Color(204, 255, 204));
 		btnSonarScanner.setBounds(20, 106, 181, 23);
 		panel.add(btnSonarScanner);
+		
+		btnStopSonarServer = new JButton("Stop Sonar Server");
+		btnStopSonarServer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		btnStopSonarServer.setForeground(new Color(128, 0, 0));
+		btnStopSonarServer.setBackground(new Color(204, 255, 204));
+		btnStopSonarServer.setBounds(221, 47, 181, 23);
+		panel.add(btnStopSonarServer);
 
 		
 		chckbxNewCheckBox = new JCheckBox("Inject differnt grime types on top of each other");
@@ -773,7 +799,6 @@ public class GUI extends JFrame {
 			}
 		}
 	}
-	
 	private void remove_np_name(String given){
 		for (int i = 0; i<not_patterns.size(); i++){
 			if (not_patterns.get(i)== given){
