@@ -35,7 +35,7 @@ If you are using this tool for your research, here's some bibtex for you:
  * Build Path -> Add to Build Path
  * Right Click on javassist.jar -> Build Path -> "Configure Build Path"
  * Under "Libraries" tab, click add JARs and add the javassist jar
-4. Change the paths at the top of GUI to match SonarQube and SonarScanner (lines 39-40)
+4. Change the paths at the top of GUI.java to match SonarQube and SonarScanner (lines 39-40)
 ```
 String sserver_path = "C:\\sonarqube-6.1\\bin\\windows-x86-64\\StartSonar.bat";
 String sscanner_path = "C:\\sonar-scanner-2.8\\bin\\sonar-scanner.bat";
