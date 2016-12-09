@@ -597,6 +597,7 @@ public class GUI extends JFrame {
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBorder(new TitledBorder(null, "SONARQUBE", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GREEN));
+		panel.setLayout(null);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridheight = 4;
 		gbc_panel.gridwidth = 9;
@@ -604,6 +605,36 @@ public class GUI extends JFrame {
 		gbc_panel.gridx = 6;
 		gbc_panel.gridy = 12;
 		contentPane.add(panel, gbc_panel);
+		
+		JLabel lblStartThe = new JLabel("1. Start the Sonar Qube \"server\" at any time");
+		lblStartThe.setBounds(10, 25, 293, 14);
+		panel.add(lblStartThe);
+		
+		JLabel lblOnceThe = new JLabel("2. Once the server process is up, and grime has been injected, launch sonar scanner");
+		lblOnceThe.setBounds(10, 81, 484, 14);
+		panel.add(lblOnceThe);
+		
+		JButton btnSonarServer = new JButton("Sonar Server");
+		btnSonarServer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Runtime.getRuntime().exec("cmd /c start " + sserver_path);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnSonarServer.setForeground(new Color(0, 102, 0));
+		btnSonarServer.setBackground(new Color(204, 255, 204));
+		btnSonarServer.setBounds(20, 47, 181, 23);
+		panel.add(btnSonarServer);
+		
+		JButton btnSonarScanner = new JButton("Sonar Scanner");
+		btnSonarScanner.setForeground(new Color(0, 102, 0));
+		btnSonarScanner.setBackground(new Color(204, 255, 204));
+		btnSonarScanner.setBounds(20, 106, 181, 23);
+		panel.add(btnSonarScanner);
 
 		
 		chckbxNewCheckBox = new JCheckBox("Inject differnt grime types on top of each other");
