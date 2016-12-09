@@ -29,14 +29,15 @@ import java.io.IOException;
 
 import javassist.*;
 import javax.swing.JFileChooser;
+import javax.swing.border.TitledBorder;
 
 
 public class GUI extends JFrame {
+	
 	/*===Sonar Stuff ===*/
 	String sserver_path = "C:\\sonarqube-6.1\\bin\\windows-x86-64\\StartSonar.bat";
 	String sscanner_path = "C:\\sonar-scanner-2.8\bin\\sonar-scanner.bat";	
 	/*===Sonar Stuff ===*/
-	
 	
 	/*===Injector Stuff ===*/
 	private WarpDrive engage = new WarpDrive();
@@ -72,6 +73,7 @@ public class GUI extends JFrame {
 	ClassPool pool = ClassPool.getDefault();
 	private JButton btnGetProjects;
 	private JButton btnGetProjects_1;
+	private JPanel panel;
 
 
 	/**
@@ -102,14 +104,14 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 300, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		lblPatternClasses = new JLabel("Pattern Classes");
-		lblPatternClasses.setForeground(new Color(0, 102, 0));
+		lblPatternClasses.setForeground(Color.BLACK);
 		lblPatternClasses.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblPatternClasses = new GridBagConstraints();
 		gbc_lblPatternClasses.insets = new Insets(0, 0, 5, 5);
@@ -118,11 +120,12 @@ public class GUI extends JFrame {
 		contentPane.add(lblPatternClasses, gbc_lblPatternClasses);
 		
 		lblNotPatternClasses = new JLabel("Not Pattern Classes");
-		lblNotPatternClasses.setForeground(new Color(0, 102, 0));
+		lblNotPatternClasses.setForeground(Color.BLACK);
 		lblNotPatternClasses.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblNotPatternClasses = new GridBagConstraints();
-		gbc_lblNotPatternClasses.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNotPatternClasses.gridx = 14; //TODO: Adjust
+		gbc_lblNotPatternClasses.gridwidth = 4;
+		gbc_lblNotPatternClasses.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNotPatternClasses.gridx = 7; //TODO: Adjust
 		gbc_lblNotPatternClasses.gridy = 0;
 		contentPane.add(lblNotPatternClasses, gbc_lblNotPatternClasses);
 		
@@ -590,6 +593,17 @@ public class GUI extends JFrame {
 		gbc_textField_3.gridx = 3;
 		gbc_textField_3.gridy = 11;
 		contentPane.add(textField_3, gbc_textField_3);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBorder(new TitledBorder(null, "SONARQUBE", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GREEN));
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridheight = 4;
+		gbc_panel.gridwidth = 9;
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 6;
+		gbc_panel.gridy = 12;
+		contentPane.add(panel, gbc_panel);
 
 		
 		chckbxNewCheckBox = new JCheckBox("Inject differnt grime types on top of each other");
@@ -670,7 +684,7 @@ public class GUI extends JFrame {
 			
 	   		GridBagConstraints gbc_chckbxTestpurposes = new GridBagConstraints();
 	   		gbc_chckbxTestpurposes.gridx = 6;
-	   		gbc_chckbxTestpurposes.gridy = 2+i;
+	   		gbc_chckbxTestpurposes.gridy = 1+i;
 	   		
 			String name = "analyze_this."+pclass.getText();
 
@@ -697,8 +711,8 @@ public class GUI extends JFrame {
 			labels[i].setVisible(true);
 			
 	   		GridBagConstraints gbc_chckbxTestpurposes = new GridBagConstraints();
-	   		gbc_chckbxTestpurposes.gridx = 14;
-	   		gbc_chckbxTestpurposes.gridy = 2+i;
+	   		gbc_chckbxTestpurposes.gridx = 7;
+	   		gbc_chckbxTestpurposes.gridy = 1+i;
 	   		
 			String name = "analyze_this."+npclass.getText();
 			
