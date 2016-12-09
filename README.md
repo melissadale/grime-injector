@@ -42,11 +42,11 @@ String sscanner_path = "C:\\sonar-scanner-2.8\\bin\\sonar-scanner.bat";
 ```
 
 # Analyze a project
-* Copy/Paste the project you wish to model the grime growth into the "analyze_this" package
-* Run the GUI class (note you will have to include relative paths to files if they are located in subdirectories) and Click Inject
-* Start SonarQube Server
-* Run sonar_drilldown.bat (in the Lib folder)
-* Navigate to localhost:9000
+1. Copy/Paste the project you wish to model the grime growth into the "analyze_this" package
+2. Run the GUI class (note you will have to include relative paths to files if they are located in subdirectories) and Click Inject
+3. Start SonarQube Server
+4. Run sonar_drilldown.bat (in the Lib folder)
+5. Navigate to localhost:9000
 
 # Tools used in the Grime Injector
 * [SonarQube](http://www.sonarqube.org/)
