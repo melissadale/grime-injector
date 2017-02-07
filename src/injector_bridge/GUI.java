@@ -653,8 +653,14 @@ public class GUI extends JFrame {
 		btnStopSonarServer = new JButton("Stop Sonar Server");
 		btnStopSonarServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				//Powershell: kill -name java
+				String path = System.getProperty("user.dir")+ "\\Lib\\sonar_kill.bat";
+				try {
+					Runtime.getRuntime().exec("cmd /c start " + path);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnStopSonarServer.setForeground(new Color(128, 0, 0));
