@@ -753,14 +753,19 @@ public class GUI extends JFrame {
 
 			try{
 				CtClass cc = pool.get(name);
+				labels[i].setForeground(passed);
 				cc.detach();
-			} catch (NotFoundException  e){
-				remove_p_name(name);
-				labels[i].setForeground(failed);
-			} finally{
 		   		contentPane.add(labels[i], gbc_chckbxTestpurposes);
 		   		contentPane.revalidate(); 
-			}
+		   		
+			} catch (NotFoundException  e){
+				remove_p_name(pclass.getText());
+				labels[i].setForeground(failed);
+
+		   		contentPane.add(labels[i], gbc_chckbxTestpurposes);
+		   		contentPane.revalidate(); 
+				break;
+			} 
 		}
 	}
 	
@@ -787,12 +792,16 @@ public class GUI extends JFrame {
 				CtClass cc = pool.get(name);
 				labels[i].setForeground(passed);
 				cc.detach();
-			} catch (Exception e){
-				remove_np_name(name);
-				labels[i].setForeground(failed);
-			} finally{
 		   		contentPane.add(labels[i], gbc_chckbxTestpurposes);
 		   		contentPane.revalidate(); 
+
+			} catch (Exception e){
+				remove_np_name(npclass.getText());
+				labels[i].setForeground(failed);
+		   		contentPane.add(labels[i], gbc_chckbxTestpurposes);
+		   		contentPane.revalidate(); 
+
+				break;
 			}
 		}
 	}
@@ -800,14 +809,14 @@ public class GUI extends JFrame {
 	/*==============================================Helper========================================*/
 	private void remove_p_name(String given){
 		for (int i = 0; i<patterns.size(); i++){
-			if (patterns.get(i)== given){
+			if (patterns.get(i).equals(given)){
 				patterns.remove(i);
 			}
 		}
 	}
 	private void remove_np_name(String given){
 		for (int i = 0; i<not_patterns.size(); i++){
-			if (not_patterns.get(i)== given){
+			if (not_patterns.get(i).equals(given)){
 				not_patterns.remove(i);
 			}
 		}
